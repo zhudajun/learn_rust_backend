@@ -1,0 +1,35 @@
+[package]
+name = "api-lib"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+# Web 框架
+actix-web = "4.3.1"
+# 数据库
+sqlx = { version = "0.6.3", default-features = false, features = [
+    "runtime-actix-native-tls",
+    "macros",
+    "postgres",
+    "uuid",
+    "chrono",
+    "json",
+] }
+tracing = "0.1"
+chrono = "0.4.26"
+serde = "1.0"
+serde_json = "1.0"
+#  
+async-trait = "0.1"
+uuid = {version =  "1.3", features = ["serde", "v4", "js"]}
+
+# 共享的数据模型
+shared = {path = "../../shared", features = ["backend"]}
+
+
+# 测试环境记录 主要是测试使用
+[dev-dependencies]
+actix-rt = "2.0.0"
+
